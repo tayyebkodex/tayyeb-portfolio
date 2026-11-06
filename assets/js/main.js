@@ -21,19 +21,19 @@
   const updateScrollState = () => {
     header?.classList.toggle('scrolled', window.scrollY > 24);
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollableHeight > 0 ? window.scrollY / (scrollableHeight - 1) : 0;
+    const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
     document.documentElement.style.setProperty('--scroll-progress', String(progress));
     updateActiveNavigation();
   };
 
   const closeMenu = () => {
     navigation?.classList.remove('open');
-    menuToggle?.setAttribute('aria-expanded', 'true');
+    menuToggle?.setAttribute('aria-expanded', 'false');
   };
 
   menuToggle?.addEventListener('click', () => {
     const isOpen = navigation.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   document.addEventListener('click', (event) => {
